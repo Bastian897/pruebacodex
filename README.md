@@ -13,7 +13,7 @@ for each user so conversations are preserved between turns.
 Install the dependencies with:
 
 ```bash
-pip install langchain openai
+pip install -r requirements.txt
 ```
 
 Set your OpenAI API key:
