@@ -47,12 +47,15 @@ class UserAgent:
         return result["messages"][-1].content
 
 
+
 def main() -> None:
     import argparse
+
 
     parser = argparse.ArgumentParser(
         description="Chatbot using LangGraph and Tavily search"
     )
+
     parser.add_argument("user_id", help="Identifier for the user")
     args = parser.parse_args()
 
@@ -61,16 +64,17 @@ def main() -> None:
         raise RuntimeError("Please set the OPENAI_API_KEY environment variable")
 
     llm = ChatOpenAI(openai_api_key=api_key)
-    agent = UserAgent(llm)
 
+    agent = UserAgent(llm)
+    
     print("Type 'exit' to quit")
     while True:
         message = input("You: ")
         if message.lower() in {"exit", "quit"}:
             break
         response = agent.chat(args.user_id, message)
-        print("Bot:", response)
 
+        print("Bot:", response)
 
 if __name__ == "__main__":
     main()
